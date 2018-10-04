@@ -33,7 +33,7 @@ public class DemoAnnoController {
         return "url:" + request.getRequestURL() + "can access,id:" + id;
     }
 
-    @RequestMapping(value = "/obj", produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/obj", produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String paddObj(DemoObj obj, HttpServletRequest request) {
         return "url:" + request.getRequestURL() + "can access,id:" + obj.getId() + "name:" + obj.getName();

@@ -21,8 +21,7 @@ public class MvcConfig {
     @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        // 和开发目录不同，运行时自动编译到/WEB-INF/classes/views目录下
-        viewResolver.setPrefix("/WEB-INF/classes/views/");
+        viewResolver.setPrefix("/WEB-INF/views/");
         viewResolver.setSuffix(".jsp");
         viewResolver.setViewClass(JstlView.class);
         return viewResolver;
