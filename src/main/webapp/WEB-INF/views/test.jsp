@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-    test
+    <a href="/toUpload">文件上传</a>
 </body>
 </html>
