@@ -4,6 +4,7 @@ import com.test.interceptor.DemoInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.*;
@@ -19,6 +20,8 @@ import org.springframework.web.servlet.view.JstlView;
 // @EnableWebMvc注解用于启动Spring MVC特性，类似<mvc:annotation-driven/>，
 // 会在Spring中注册一些组件来提供最基本的MVC功能
 @EnableWebMvc
+// 开启定时任务
+@EnableScheduling
 @ComponentScan("com.test")
 public class MvcConfig extends WebMvcConfigurerAdapter {
     @Bean
@@ -40,8 +43,9 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // 设置访问路径和静态资源路径
-        registry.addResourceHandler("/assets/**").addResourceLocations("classpath:/assets/");
+        // 设置访问路径和静态资源路径（注意路径不要加classpath）
+        registry.addResourceHandler("/assets/**").addResourceLocations("/assets/");
+        super.addResourceHandlers(registry);
     }
 
     @Bean
@@ -75,6 +79,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/index").setViewName("/test");
         registry.addViewController("/toUpload").setViewName("/upload");
         registry.addViewController("/sse").setViewName("/sse");
+        registry.addViewController("/async").setViewName("/async");
     }
 
     /**

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Random;
 
 /**
- * 服务器推送
+ * 服务器推送-浏览器方式
  *
  * @author Justyn
  * @date 2018/10/5 20:30
@@ -32,6 +32,7 @@ public class SseController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        // 有数据更新时才会返回给客户端
         return "data:Testing 1,2,3" + r.nextInt() + "\n\n";
     }
 }

@@ -13,19 +13,19 @@
 <body>
 <div id="msgFrompPush"></div>
 
-<script src="/assets/js/jQuery3.3.1.js"/>
+<script type="text/javascript" src="/assets/js/jQuery3.3.1.js"></script>
 <script>
     if (!!window.EventSource) {
         var source = new EventSource('push');
         s = '';
-        source.addEventListener('message', function (evt) {
+        source.addEventListener('message', function (e) {
             s += e.data + "</br>";
             $("#msgFrompPush").html(s);
         });
-        source.addEventListener('open', function (evt) {
+        source.addEventListener('open', function (e) {
             console.log('链接打开');
         }, false);
-        source.addEventListener('error', function (evt) {
+        source.addEventListener('error', function (e) {
             if (e.readyState == EventSource.CLOSED) {
                 console.log('连接关闭')
             }
